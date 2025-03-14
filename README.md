@@ -1,51 +1,130 @@
-# dkeeper
+# dKeeper
 
-Welcome to your new dkeeper project and to the internet computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
+Welcome to dKeeper, a decentralized note-keeping application built with Motoko (for the backend) and React (for the frontend) on the Internet Computer.
 
-To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
+## 📌 Project Overview
 
-To learn more before you start working with dkeeper, see the following documentation available online:
+dKeeper allows users to create, read, and delete notes that are stored on a decentralized backend. The frontend is built using React, and the backend logic is implemented in Motoko.
 
-- [Quick Start](https://sdk.dfinity.org/docs/quickstart/quickstart-intro.html)
-- [SDK Developer Tools](https://sdk.dfinity.org/docs/developers-guide/sdk-guide.html)
-- [Motoko Programming Language Guide](https://sdk.dfinity.org/docs/language-guide/motoko.html)
-- [Motoko Language Quick Reference](https://sdk.dfinity.org/docs/language-guide/language-manual.html)
-- [JavaScript API Reference](https://erxue-5aaaa-aaaab-qaagq-cai.raw.ic0.app)
+## 🏗️ Tech Stack
 
-If you want to start working on your project right away, you might want to try the following commands:
+Motoko – Smart contract language for the Internet Computer.
+
+React – Frontend framework for a dynamic UI.
+
+Webpack – Bundler for the frontend.
+
+DFINITY SDK – Tools for deploying and interacting with Internet Computer canisters.
+
+Material-UI – Used for UI components.
+
+## 🚀 Getting Started
+
+1️⃣ Install DFINITY SDK
+
+Make sure you have the DFINITY SDK installed on your system:
 
 ```bash
-cd dkeeper/
-dfx help
-dfx config --help
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
-## Running the project locally
-
-If you want to test your project locally, you can use the following commands:
+2️⃣ Clone the Repository
 
 ```bash
-# Starts the replica, running in the background
-dfx start --background
+git clone https://github.com/your-username/dkeeper.git
+cd dkeeper
+```
 
-# Deploys your canisters to the replica and generates your candid interface
+3️⃣ Start the Internet Computer Local Replica
+
+```bash
+dfx start --background
+```
+
+4️⃣ Deploy Canisters
+
+```bash
 dfx deploy
 ```
 
-Once the job completes, your application will be available at `http://localhost:8000?canisterId={asset_canister_id}`.
-
-Additionally, if you are making frontend changes, you can start a development server with
+5️⃣ Run the Frontend
 
 ```bash
+npm install
 npm start
 ```
 
-Which will start a server at `http://localhost:8080`, proxying API requests to the replica at port 8000.
+This will start the development server at http://localhost:8080/, while the backend API runs on http://localhost:8000/.
 
-### Note on frontend environment variables
+## 🔧 Project Structure
 
-If you are hosting frontend code somewhere without using DFX, you may need to make one of the following adjustments to ensure your project does not fetch the root key in production:
+```
+dkeeper/
+├── dist/                      # Build output directory
+├── node_modules/              # Installed dependencies
+├── src/                       # Main source code
+│   ├── declarations/          # Auto-generated canister bindings
+│   │   ├── dkeeper/           
+│   │   │   ├── dkeeper.did.d.ts
+│   │   │   ├── dkeeper.did.js
+│   │   │   ├── dkeeper.most
+│   │   │   ├── dkeeper.old.did
+│   │   │   ├── dkeeper.old.most
+│   │   │   ├── index.js
+│   ├── dkeeper/               # Motoko backend logic
+│   │   ├── main.mo            # Smart contract logic
+│   ├── dkeeper_assets/        # Frontend React app
+│   │   ├── assets/            # Static (icons, styles)
+│   │   │   ├── favicon.ico
+│   │   │   ├── logo.png
+│   │   │   ├── sample-asset.txt
+│   │   │   ├── styles.css
+│   │   ├── src/               # React source code
+│   │   │   ├── components/    # React components
+│   │   │   │   ├── App.jsx
+│   │   │   │   ├── CreateArea.jsx
+│   │   │   │   ├── Footer.jsx
+│   │   │   │   ├── Header.jsx
+│   │   │   │   ├── Note.jsx
+│   │   │   ├── index.html   # Entry HTML file
+│   │   │   ├── index.jsx    # React entry point
+├── .gitignore               # Git ignore file
+├── dfx.json                 # Internet Computer config
+├── package.json             # Dependencies and scripts
+├── package-lock.json        # Dependency lock file
+├── webpack.config.js        # Webpack setup
+└── README.md                # Project documentation
+```
 
-- set`NODE_ENV` to `production` if you are using Webpack
-- use your own preferred method to replace `process.env.NODE_ENV` in the autogenerated declarations
-- Write your own `createActor` constructor
+## 🛠️ Features
+
+* ✅ Create notes
+* ✅ View all saved notes
+* ✅ Delete notes
+* ✅ Persist data using Internet Computer smart contracts
+
+## 📌 Deployment to the Internet Computer
+
+If you want to deploy your project live on the Internet Computer, use:
+
+```bash
+dfx deploy --network ic
+```
+
+This will deploy the canisters to the IC mainnet.
+
+## 📝 Additional Resources
+
+Internet Computer Docs https://internetcomputer.org/docs/home
+
+Motoko Language Guide https://internetcomputer.org/docs/motoko/main/getting-started/motoko-introduction
+
+React Documentation https://react.dev/
+
+## 💡 Future Improvements
+
+✅ Add user authentication
+
+✅ Implement note editing
+
+✅ Improve UI styling
